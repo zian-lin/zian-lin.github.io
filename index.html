@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zian Lin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ik-blue: #002FA7;
+      }
+      html {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      html::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+      }
+      .home-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .content {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      .file-box {
+        width: 100%;
+        max-width: 800px;
+        aspect-ratio: 2.5 / 1;
+        border: 2px solid #d1d5db;
+        background: #f9fafb;
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+      }
+      .file-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-content: flex-start;
+      }
+      .file-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+        max-width: 120px;
+        text-decoration: none;
+      }
+      .file-item:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+      .file-icon {
+        width: 60px;
+        height: 60px;
+        color: #6b7280;
+        stroke-width: 1;
+      }
+      .file-name {
+        font-size: 0.875rem;
+        text-align: center;
+        color: #000;
+        word-break: break-word;
+      }
+      .email-link {
+        margin-top: 1rem;
+      }
+      .email-link a {
+        color: var(--ik-blue);
+        font-size: 1.125rem;
+        text-decoration: none;
+      }
+      .email-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="home-container">
+      <main class="content">
+        <div class="file-box">
+          <div class="file-grid">
+            <a href="beach-music.html" class="file-item">
+              <svg 
+                class="file-icon" 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="1.5" 
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" 
+                />
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="1.5" 
+                  d="M15 13H9M15 17H9M11 9H9" 
+                />
+              </svg>
+              <span class="file-name">'Beach Music', 10 Years Later</span>
+            </a>
+          </div>
+        </div>
+        
+        <footer class="email-link">
+          <a href="mailto:zianlin.nz@gmail.com">zianlin.nz@gmail.com</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
