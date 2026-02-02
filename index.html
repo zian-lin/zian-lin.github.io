@@ -1,166 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zian Lin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-      :root {
-        --ik-blue: #002FA7;
-      }
-      html {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-      html::-webkit-scrollbar {
-        display: none;
-      }
-      body {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
-        margin: 0;
-        padding: 0;
-      }
-      .home-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-      }
-      .content {
-        width: 100%;
-        max-width: 1200px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-      }
-      .file-box {
-        width: 100%;
-        max-width: 800px;
-        aspect-ratio: 2.5 / 1;
-        border: 2px solid #d1d5db;
-        background: #f9fafb;
-        padding: 2rem;
-        display: flex;
-        align-items: flex-start;
-      }
-      .file-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-content: flex-start;
-      }
-      .file-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        border-radius: 8px;
-        transition: background-color 0.2s;
-        max-width: 120px;
-        text-decoration: none;
-      }
-      .file-item:hover {
-        background: rgba(0, 0, 0, 0.05);
-      }
-      .file-icon {
-        width: 60px;
-        height: 60px;
-        color: #6b7280;
-        stroke-width: 1;
-      }
-      .file-name {
-        font-size: 0.875rem;
-        text-align: center;
-        color: #000;
-        word-break: break-word;
-      }
-      .email-link {
-        margin-top: 1rem;
-      }
-      .email-link a {
-        color: var(--ik-blue);
-        font-size: 1.125rem;
-        text-decoration: none;
-      }
-      .email-link a:hover {
-        text-decoration: underline;
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-overlay {
+            display: none !important;
+        }
+        .modal-overlay.active {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-black antialiased overflow-x-hidden">
+    <main class="min-h-screen w-full flex flex-col md:flex-row p-8 md:p-24 selection:bg-blue-100 relative">
+      
+      <!-- Left Column: Name and Contact -->
+      <div class="flex-1 flex flex-col md:justify-between">
+        <div>
+          <h1 class="text-[4rem] md:text-[6rem] lg:text-[6rem] font-normal leading-none tracking-tighter mb-8 break-words pointer-events-none">
+            Zian Lin
+          </h1>
+        </div>
+
+        <div class="space-y-1 text-base md:text-lg">
+          <p>
+            <a 
+              href="mailto:zian67@gmail.com" 
+              class="hover:text-blue-600 transition-colors duration-75"
+            >
+              zian67@gmail.com
+            </a>
+          </p>
+          <p>
+            <a 
+              href="https://github.com/zianlin" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="hover:text-blue-600 transition-colors duration-75"
+            >
+              github.com/zianlin
+            </a>
+          </p>
+          <p>
+            <a 
+              href="https://linkedin.com/in/zianlin" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="hover:text-blue-600 transition-colors duration-75"
+            >
+              linkedin.com/in/zianlin
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Navigation Links -->
+      <div class="flex-1 flex flex-col items-start md:items-end justify-end space-y-4 md:space-y-0 md:justify-between md:pt-8 md:pb-8">
+        <button 
+          onclick="openModal('about')" 
+          class="text-3xl md:text-4xl lg:text-5xl font-normal underline decoration-1 underline-offset-[12px] hover:text-blue-600 hover:decoration-blue-600 transition-all duration-75 cursor-pointer"
+        >
+          About
+        </button>
+        <a 
+          href="public/files/resume.pdf" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-3xl md:text-4xl lg:text-5xl font-normal underline decoration-1 underline-offset-[12px] hover:text-blue-600 hover:decoration-blue-600 transition-all duration-75 cursor-pointer"
+        >
+          Resume
+        </a>
+        <button 
+          onclick="openModal('projects')" 
+          class="text-3xl md:text-4xl lg:text-5xl font-normal underline decoration-1 underline-offset-[12px] hover:text-blue-600 hover:decoration-blue-600 transition-all duration-75 cursor-pointer"
+        >
+          Projects
+        </button>
+        <button 
+          onclick="openModal('writings')" 
+          class="text-3xl md:text-4xl lg:text-5xl font-normal underline decoration-1 underline-offset-[12px] hover:text-blue-600 hover:decoration-blue-600 transition-all duration-75 cursor-pointer"
+        >
+          Writings
+        </button>
+      </div>
+    </main>
+
+    <!-- Modal Content Templates -->
+    <template id="aboutTemplate">
+      <div class="p-8 md:p-12">
+        <p class="text-lg md:text-xl leading-relaxed text-left">
+          I currently work at Sony as a software engineer. I'm primarily focused on full-stack software development and building beautiful things that reach a lot of people. Previously, I was an intern at Sony, an intern at KSDT, an undergraduate researcher at École Polytechnique in France, and an undergraduate at UC San Diego, where I graduated cum laude with a B.S. in Computer Science in 2023. On this site you can find my resume, various side projects, and misc. writings on things that interest me. Feel free to reach out at my email!
+        </p>
+      </div>
+    </template>
+
+    <template id="writingsTemplate">
+      <div class="p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <a 
+          href="beach-music.html" 
+          class="group flex flex-col items-center text-center space-y-2 max-w-[120px]"
+        >
+          <div class="w-16 h-20 bg-white border-2 border-black relative group-hover:border-blue-600 transition-colors flex items-center justify-center">
+            <div class="absolute top-0 right-0 w-4 h-4 border-l-2 border-b-2 border-black bg-white group-hover:border-blue-600 transition-colors"></div>
+            <div class="flex flex-col gap-2 px-2">
+              <div class="h-0.5 w-8 bg-black group-hover:bg-blue-600 transition-colors"></div>
+              <div class="h-0.5 w-8 bg-black group-hover:bg-blue-600 transition-colors"></div>
+              <div class="h-0.5 w-8 bg-black group-hover:bg-blue-600 transition-colors"></div>
+              <div class="h-0.5 w-8 bg-black group-hover:bg-blue-600 transition-colors"></div>
+            </div>
+          </div>
+          <span class="text-xs group-hover:text-blue-600 w-full px-1 break-words">'Beach Music', 10 Years Later</span>
+        </a>
+      </div>
+    </template>
+
+    <template id="projectsTemplate">
+      <div class="p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <a 
+          href="easy-street.html" 
+          class="group flex flex-col items-center text-center space-y-2 max-w-[120px]"
+        >
+          <div class="w-16 h-20 bg-white border-2 border-black relative group-hover:border-blue-600 transition-colors flex items-center justify-center">
+            <div class="absolute top-2 left-2 right-2 bottom-2 border border-black group-hover:border-blue-600 transition-colors"></div>
+            <span class="text-2xl group-hover:text-blue-600 transition-colors">🛒</span>
+          </div>
+          <span class="text-xs group-hover:text-blue-600 w-full px-1 break-words">Easy Street</span>
+        </a>
+        <a 
+          href="labyrinth.html" 
+          class="group flex flex-col items-center text-center space-y-2 max-w-[120px]"
+        >
+          <div class="w-16 h-20 bg-white border-2 border-black relative group-hover:border-blue-600 transition-colors flex items-center justify-center">
+            <div class="absolute top-2 left-2 right-2 bottom-2 border border-black group-hover:border-blue-600 transition-colors"></div>
+            <span class="text-2xl group-hover:text-blue-600 transition-colors">📍</span>
+          </div>
+          <span class="text-xs group-hover:text-blue-600 w-full px-1 break-words">Labyrinth</span>
+        </a>
+        <a 
+          href="birds-of-a-feather.html" 
+          class="group flex flex-col items-center text-center space-y-2 max-w-[120px]"
+        >
+          <div class="w-16 h-20 bg-white border-2 border-black relative group-hover:border-blue-600 transition-colors flex items-center justify-center">
+            <div class="absolute top-2 left-2 right-2 bottom-2 border border-black group-hover:border-blue-600 transition-colors"></div>
+            <span class="text-2xl group-hover:text-blue-600 transition-colors">🐦</span>
+          </div>
+          <span class="text-xs group-hover:text-blue-600 w-full px-1 break-words">Birds of a Feather</span>
+        </a>
+      </div>
+    </template>
+
+    <!-- Modal Overlay -->
+    <div 
+      id="modalOverlay"
+      class="modal-overlay fixed inset-0 z-40 items-center justify-center p-4"
+    >
+      <div 
+        class="w-full max-w-3xl bg-white border border-black relative z-50 overflow-hidden flex flex-col"
+      >
+        <div class="flex items-center justify-between p-3 border-b border-black">
+          <span id="modalTitle" class="text-base capitalize"></span>
+          <button 
+            onclick="closeModal()"
+            class="hover:text-blue-600 font-bold text-2xl px-2 leading-none"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <div id="modalContent" class="overflow-auto">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openModal(type) {
+        const overlay = document.getElementById('modalOverlay');
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('modalContent');
+        
+        title.textContent = type;
+        
+        // Get template and clone its content
+        const template = document.getElementById(type + 'Template');
+        content.innerHTML = ''; // Clear existing content
+        const clone = template.content.cloneNode(true);
+        content.appendChild(clone);
+        
+        overlay.classList.add('active');
       }
       
-      /* Mobile styles */
-      @media (max-width: 768px) {
-        .home-container {
-          padding: 1rem;
-        }
-        .file-box {
-          padding: 1rem;
-          aspect-ratio: auto;
-          min-height: 200px;
-        }
-        .file-grid {
-          gap: 1rem;
-          justify-content: flex-start;
-        }
-        .file-item {
-          padding: 0.5rem;
-          align-items: flex-start;
-        }
-        .file-icon {
-          width: 48px;
-          height: 48px;
-        }
-        .file-name {
-          font-size: 0.8125rem;
-          text-align: left;
-        }
+      function closeModal() {
+        const overlay = document.getElementById('modalOverlay');
+        overlay.classList.remove('active');
+        return false;
       }
-    </style>
-  </head>
-  <body>
-    <div class="home-container">
-      <main class="content">
-        <div class="file-box">
-          <div class="file-grid">
-            <a href="beach-music.html" class="file-item">
-              <svg 
-                class="file-icon" 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="1.5" 
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" 
-                />
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="1.5" 
-                  d="M15 13H9M15 17H9M11 9H9" 
-                />
-              </svg>
-              <span class="file-name">'Beach Music', 10 Years Later</span>
-            </a>
-          </div>
-        </div>
-        
-        <footer class="email-link">
-          <a href="mailto:zianlin.nz@gmail.com">zianlin.nz@gmail.com</a>
-        </footer>
-      </main>
-    </div>
-  </body>
+      
+      // Close modal when clicking outside
+      document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target.id === 'modalOverlay') {
+          closeModal();
+        }
+      });
+      
+      // Close modal on Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+    </script>
+</body>
 </html>

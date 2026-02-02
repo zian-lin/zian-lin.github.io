@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Street - Zian Lin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      article a {
+        color: #2563eb;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      article a:hover {
+        color: #1d4ed8;
+      }
+      .back-link a {
+        color: black;
+        text-decoration: none;
+        transition: color 75ms;
+      }
+      .back-link a:hover {
+        color: #2563eb;
+      }
+    </style>
+</head>
+<body class="bg-white text-black antialiased">
+    <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <div class="back-link mb-16">
+        <a href="index.html" class="text-base md:text-lg">← Back</a>
+      </div>
+      
+      <article>
+        <h1 class="text-4xl md:text-5xl font-normal leading-tight mb-4">Easy Street</h1>
+        <p class="text-xl text-gray-600 mb-12">A smart online shopping companion</p>
+        
+        <img 
+          src="public/media/easy-street.png" 
+          alt="Easy Street Chrome Extension" 
+          class="block mx-auto mb-12 max-w-2xl w-full h-auto border border-gray-200"
+        >
+        
+        <div class="space-y-6 text-lg leading-relaxed">
+          <p>&emsp;Easy Street is a Chrome extension that transforms online shopping by allowing users to easily filter visually similar products on price, size, color, and more. When the user lands on a product page, the extension fetches the main image and then uses image recognition to find visually similar results. These are then extracted for their product attributes and listed in a compact pop-up window on the side of the user's screen. From there, they can easily sort through products in their size or price range or preference, saving them time and money.</p>
+          
+          <p>&emsp;I designed the UI, implemented it using React and used Python and Flask for all backend logic (image recognition, feature extraction, etc.)</p>
+          
+          <p class="text-gray-600">
+            <a href="https://github.com/zianlin/easy-street" target="_blank" rel="noopener noreferrer">View it on Github →</a>
+          </p>
+        </div>
+      </article>
+    </div>
+</body>
+</html>
